@@ -3,6 +3,8 @@ LAB 2 ASSIGNMENT - TINYGREP
 Student ID: 2300411
 Name: Augustine Chan Yi Ren
 */
+
+/* Hi Prof Nicholas, is it possible if you add a note in my codeblock to explain why test case 3 & 6 is returning a fail...*/
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
@@ -11,23 +13,26 @@ Name: Augustine Chan Yi Ren
 #define limit 35
 
 // method to check for special characters
-bool containSpecial(char input, char pattern)
+bool containsSpecial(char input, char pattern)
 {
+    // i still don't know how to include the lowercase/uppercase check in here?
+    // should i do it in another method?
     return (pattern == '.' || (pattern == '_' && isspace(input)) || input == pattern);
 }
 
 int findPattern(char *input, char *pattern, bool choice)
 {
-    size_t inputLength = strlen(input);
+    // diff between sizeof and size_t was learned while writing this codeblock.... one is a variable type while the latter is a operator.
+    size_t inputLength = strlen(input); // get length of input
     size_t patternLength = strlen(pattern);
 
     for (size_t i = 0; i <= inputLength - patternLength; i++)
     {
         bool match = true; // initialise to true first
 
-        for (size_t j = 0; j < patternLength; j++)
+        for (size_t j = 0; j < patternLength; j++) // loop through
         {
-            if (!containSpecial(input[i + j], pattern[j]))
+            if (!containsSpecial(input[i + j], pattern[j])) // ! means NOT
             {
                 match = false;
                 break;
@@ -54,7 +59,7 @@ int main()
     fgets(pattern, sizeof(pattern), stdin);
 
     printf("Should text be matched to case-sensitive?\n");
-    scanf(" %c", &choice);
+    fgets("%c", choice, stdin);
 
     size_t inputLength = strlen(input);
     size_t patternLength = strlen(pattern);
@@ -69,7 +74,7 @@ int main()
         pattern[patternLength - 1] = '\0';
     }
 
-    int matchIndex = findPattern(input, pattern, (choice)); // must match the 3 parameters declared in the method.
+    int matchIndex = findPattern(input, pattern, choice); // must match the 3 parameters declared in the method.
 
     if (matchIndex != -1)
     {
