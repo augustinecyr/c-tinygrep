@@ -1,10 +1,4 @@
-/*
-LAB 2 ASSIGNMENT - TINYGREP
-Student ID: 2300411
-Name: Augustine Chan Yi Ren
-*/
 
-/* Hi Prof Nicholas, is it possible if you add a note in my codeblock to explain why test case 3 & 6 is returning a fail...*/
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
@@ -15,8 +9,7 @@ Name: Augustine Chan Yi Ren
 // method to check for special characters
 bool containsSpecial(char input, char pattern)
 {
-    // i still don't know how to include the lowercase/uppercase check in here?
-    // should i do it in another method?
+  
     return (pattern == '.' || (pattern == '_' && isspace(input)) || input == pattern);
 }
 
@@ -50,7 +43,7 @@ int main()
 {
     char input[limit]; // set limit to 35
     char pattern[limit];
-    bool choice; // Y or N, so opt for boolean type?
+    bool choice; 
 
     printf("Enter a line of text up to 35 characters in length ->\n");
     fgets(input, sizeof(input), stdin);
